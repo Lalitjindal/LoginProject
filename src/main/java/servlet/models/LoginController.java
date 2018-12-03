@@ -57,13 +57,32 @@ public class LoginController extends HttpServlet {
 
 		if (username.equals(user.getUsername())
 				&& password.equals(user.getPassword())) {
-			HttpSession session=request.getSession();
+			HttpSession session = request.getSession();
 			session.setAttribute("username", username);
 			session.setAttribute("password", password);
-			
 
-		} 
+		}
 		response.sendRedirect("UserDetails");
+
 	}
+
+//	private boolean checkUserAuthentication(String username, String password)
+//			throws Exception {
+//
+//		MongoClient mongoClient = new MongoClient("localhost", 12707);
+//		DB myDB = mongoClient.getDB("user_database");
+//		DBCollection UserDetailsCollection = myDB.getCollection("user_details");
+//		BasicDBObject queryofUsersDetails = new BasicDBObject();
+//		queryofUsersDetails.put("username", username);
+//		queryofUsersDetails.put("password", password);
+//		DBCursor cursorforUsersDetails = UserDetailsCollection
+//				.find(queryofUsersDetails);
+//		if (cursorforUsersDetails.hasNext()) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//
+//	}
 
 }
