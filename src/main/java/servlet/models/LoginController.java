@@ -14,6 +14,7 @@ import com.mongodb.DBCollection;
 import com.mongodb.DBCursor;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
+import com.mongodb.MongoCredential;
 
 /**
  * Servlet implementation class LoginController
@@ -93,7 +94,9 @@ public class LoginController extends HttpServlet {
 				"mongodb://localhost:27017/test");
 		try (MongoClient mongoClient = new MongoClient(uri)) {
 
+			@SuppressWarnings("deprecation")
 			DB myDB = mongoClient.getDB("user_database");
+		
 			DBCollection UserDetailsCollection = myDB
 					.getCollection("user_details");
 			BasicDBObject queryofUsersDetails = new BasicDBObject();
